@@ -1,0 +1,8 @@
+//https://css-tricks.com/all-about-floats/
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}

@@ -1,0 +1,53 @@
+.font-family-inherit { font-family: inherit; }
+.font-size-inherit   { font-size: inherit; }
+.text-deco-none      { text-decoration: none; }
+.text-deco-through   { text-decoration: line-through; }
+.text-deco-underline { text-decoration: underline; }
+
+
+.text-bold    { font-weight: bold; }
+.text-regular { font-weight: normal; }
+.text-italic  { font-style: italic; }
+.text-upper   { text-transform: uppercase; }
+.text-lower   { text-transform: lowercase; }
+
+.text-left    { text-align: left; }
+.text-center  { text-align: center; }
+.text-right   { text-align: right; }
+.text-justify { text-align: justify; }
+
+.nowrap { white-space: nowrap; }
+.break-word { word-wrap: break-word; }
+
+@for $i from 1 through 4 {
+  .line_height#{$i} {
+    @if $var-text == true {
+      @if $var-all-browser == true and  map-has-key($var-map , --line-height-#{$key} ) {
+        line-height: map-get($line-height-map, $i);      
+        line-height: var(--line-height#{$i});
+      }
+      @else {
+        line-height: var(--line-height#{$i});
+      }      
+    }
+    @else {
+      .line_height#{$i} {
+        line-height: map-get($line-height-map, $i);
+      }
+    }
+  }
+}
+
+.list-style-none { list-style: none; }
+.list-reset {
+  list-style: none;
+  padding-left: 0;
+}
+
+.truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+

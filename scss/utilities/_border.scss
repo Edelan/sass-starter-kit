@@ -1,0 +1,120 @@
+.border {
+  border-style: solid;
+  border-width: $border-width;
+}
+
+.border-none {
+  border: 0
+}
+
+@each $pos in $cardinal-point {
+  @if $var-border == true and map-has-key($var-map, --border-width) {
+    @if $var-all-browser == true {
+      .border-#{$pos} {
+        border-#{$pos}-style: solid;
+        border-#{$pos}-width: $border-width;
+        border-#{$pos}-width: var(--border-width);
+        
+      }
+    }
+    @else {
+      .border-#{$pos} {
+        border-#{$pos}-style: solid;
+        border-#{$pos}-width: var(--border-width);        
+      }
+    }
+  }
+  @else {
+    .border-#{$pos} {
+      border-#{$pos}-style: solid;
+      border-#{$pos}-width: $border-width;
+    }
+  }
+}
+
+.radius {
+  border-radius: $border-radius;
+}
+
+.radius-none {
+  border-radius: 0;
+}
+
+@each $pos in $cardinal-point {
+  @if $var-border == true and map-has-key($var-map, --border-radius) {
+    @if $var-all-browser == true { 
+      @if $pos == top {      
+        .radius-#{$pos} {
+          border-radius: $border-radius $border-radius 0 0;
+          border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+      }
+      @if $pos == right {
+        .radius-#{$pos} {
+          border-radius: 0 $border-radius $border-radius 0;    
+          border-radius: 0 var(--border-radius) var(--border-radius) 0;        
+        }
+      }
+      @if $pos == left {
+        .radius-#{$pos} {
+          border-radius: $border-radius 0 0 $border-radius;          
+          border-radius: var(--border-radius) 0 0 var(--border-radius);
+        }
+      }
+      @if $pos == bottom {
+        .radius-#{$pos} {
+          border-radius: 0 0 $border-radius $border-radius;          
+          border-radius: 0 0 var(--border-radius) var(--border-radius);          
+        }
+      }
+    }
+    @else {
+      @if $pos == top {      
+        .radius-#{$pos} {          
+          border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+      }
+      @if $pos == right {
+        .radius-#{$pos} {             
+          border-radius: 0 var(--border-radius) var(--border-radius) 0;        
+        }
+      }
+      @if $pos == left {
+        .radius-#{$pos} {                
+          border-radius: var(--border-radius) 0 0 var(--border-radius);
+        }
+      }
+      @if $pos == bottom {
+        .radius-#{$pos} {          
+          border-radius: 0 0 var(--border-radius) var(--border-radius);          
+        }
+      }        
+    }
+  }
+  @else {
+    @if $pos==top {
+      .radius-#{$pos} {
+        border-radius: $border-radius $border-radius 0 0;
+      }
+    }
+    @if $pos==right {
+      .radius-#{$pos} {
+        border-radius: 0 $border-radius $border-radius 0;
+      }
+    }
+    @if $pos==bottom {
+      .radius-#{$pos} {
+        border-radius: 0 0 $border-radius $border-radius;
+      }
+    }
+    @if $pos==left {
+      .radius-#{$pos} {
+        border-radius: $border-radius 0 0 $border-radius;
+      }
+    }
+  }
+}
+
+.radius-circle {
+  border-radius: 50%;
+}

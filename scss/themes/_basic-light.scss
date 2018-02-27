@@ -1,0 +1,31 @@
+$border-color: $palette-grey-100 !default;
+$font-text-color: $palette-grey-900 !default;
+$font-heading-color: $palette-grey-800 !default;
+$link-color: #1976d2 !default;
+$hr-color: $palette-grey-100 !default;
+
+// basics
+.container {
+  @include container(90%);
+}
+
+.border { border-color: $border-color;}
+
+body { color: $font-text-color;}
+
+[class$="-like"], h1, h2, h3, h4, h5, h6 {
+  color: $font-heading-color;
+}
+
+a {
+  color: $link-color;
+  @if (lightness($link-color) > 50) {
+    &:hover {color: darken($link-color, 5% );} // Lighter backgorund, return dark color
+  } @else {
+    &:hover {color: lighten($link-color, 5% );}; // Darker background, return light color
+  }
+  &:visited { color: complement($link-color);}
+}
+
+hr { color: $hr-color; }
+

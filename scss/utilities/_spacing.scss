@@ -1,0 +1,94 @@
+@each $prop, $abbr in (margin: m, padding: p) {
+  @each $key, $value in $space-map {
+    @if $var-spacing == true {    
+      @if $var-all-browser == true and  map-has-key($var-map , --space-#{$key} ) {
+        .#{$abbr}-#{$key} {        
+          #{$prop}: $value;
+          #{$prop}: var( --space-#{$key});
+          }
+        .#{$abbr}t-#{$key} {        
+          #{$prop}-top: $value;
+          #{$prop}-top: var( --space-#{$key});        
+        }    
+        .#{$abbr}r-#{$key} {
+          #{$prop}-right: $value;   
+          #{$prop}-right: var( --space-#{$key});        
+        }    
+        .#{$abbr}b-#{$key} {        
+          #{$prop}-bottom: $value;
+          #{$prop}-bottom: var( --space-#{$key});        
+        }
+        .#{$abbr}l-#{$key} {        
+          #{$prop}-left: $value;
+          #{$prop}-left: var( --space-#{$key});        
+        }
+        .#{$abbr}x-#{$key} {        
+          #{$prop}-right: $value;
+          #{$prop}-left: $value;
+          #{$prop}-right: var( --space-#{$key});
+          #{$prop}-left: var( --space-#{$key});
+        }      
+        .#{$abbr}y-#{$key} {        
+          #{$prop}-top: $value;
+          #{$prop}-bottom: $value;
+          #{$prop}-top: var( --space-#{$key});
+          #{$prop}-bottom: var( --space-#{$key});        
+        }
+      } 
+      @else {
+        .#{$abbr}-#{$key} {        
+          #{$prop}: var( --space-#{$key});
+          }
+        .#{$abbr}t-#{$key} {
+          #{$prop}-top: var( --space-#{$key});        
+        }    
+        .#{$abbr}r-#{$key} {
+          #{$prop}-right: var( --space-#{$key});        
+        }    
+        .#{$abbr}b-#{$key} {
+          #{$prop}-bottom: var( --space-#{$key});        
+        }
+        .#{$abbr}l-#{$key} {
+          #{$prop}-left: var( --space-#{$key});        
+        }
+        .#{$abbr}x-#{$key} {
+          #{$prop}-right: var( --space-#{$key});
+          #{$prop}-left: var( --space-#{$key});
+        }      
+        .#{$abbr}y-#{$key} {
+          #{$prop}-top: var( --space-#{$key});
+          #{$prop}-bottom: var( --space-#{$key});        
+        }
+      }
+    }  
+    @else {    
+      .#{$abbr}-#{$key} {
+        #{$prop}: $value;
+      }
+      .#{$abbr}t-#{$key} 
+      {
+        #{$prop}-top: $value;
+      }    
+      .#{$abbr}r-#{$key} {
+        #{$prop}-right: $value;
+      }    
+      .#{$abbr}b-#{$key} {
+        #{$prop}-bottom: $value;
+      }
+      .#{$abbr}l-#{$key} {
+        #{$prop}-left: $value;
+      }
+      .#{$abbr}x-#{$key} {
+        #{$prop}-right: $value;
+        #{$prop}-left: $value;
+      }
+      .#{$abbr}y-#{$key} {
+        #{$prop}-top: $value;
+        #{$prop}-bottom: $value;
+      }
+    }
+  }  
+}
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+.m-auto { margin: auto; }

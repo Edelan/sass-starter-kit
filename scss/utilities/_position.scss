@@ -1,0 +1,31 @@
+.relative { position: relative }
+.absolute { position: absolute }
+.fixed    { position: fixed }
+
+.top-0    { top: 0 }
+.right-0  { right: 0 }
+.bottom-0 { bottom: 0 }
+.left-0   { left: 0 }
+
+
+
+@each $key, $value in $z-map {
+  @if $var-position == true and map-has-key($var-map , --z-#{$key} ) {
+    @if $var-all-browser == true { 
+      .z-#{$key} {
+        z-index: $value;
+        z-index: var(--z-#{$key});
+      }
+    }     
+    @else {
+      .z-#{$key} {
+        z-index: var(--z-#{$key});
+      }
+    }
+  }
+  @else {
+    .z-#{$key} { 
+      z-index: $value; 
+    }
+  }  
+}

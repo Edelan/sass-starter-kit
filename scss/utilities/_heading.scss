@@ -1,0 +1,25 @@
+.h1-like, h1  { font-size: var(--h1) }
+.h2-like, h2  { font-size: var(--h2) }
+.h3-like, h3  { font-size: var(--h3) }
+.h4-like, h4  { font-size: var(--h4) }
+.h5-like, h5  { font-size: var(--h5) }
+.h6-like, h6  { font-size: var(--h6) }
+
+@for $i from 1 through 6 {
+  .h#{$i}-like, h#{$i} {
+    @if $var-heading == true and  map-has-key($var-map , --h#{$i} ) {
+      @if $var-all-browser == true { 
+        font-size: map-get($heading-map, $i);
+        font-size: var(--h#{$i});
+      }
+      @else {
+        font-size: var(--h#{$i});
+      }      
+    }
+    @else {
+      .h#{$i}-like, h#{$i} {
+        font-size: map-get($heading-map, $i);
+      }
+    }
+  }
+}

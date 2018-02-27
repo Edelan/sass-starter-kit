@@ -1,0 +1,16 @@
+@mixin container($value) {
+	@if unitless($value) {
+		@warn "Assuming #{$value} with unit (px, %, em ...)";
+	} @else {
+		max-width: $value;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	
+}
+
+// @mixin sidebar-width-responsive(){
+//   @each map-values($layout-breakpoints) {
+
+//   }
+// }
